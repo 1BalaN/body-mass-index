@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Калькулятор расчета калорий</title>
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="calculator__container">
+            <form id="calculator-form" name="main">
+              <!--step 1-->
+                <div class="step" id="step-1">
+                    <div class="calculator__title">Калькулятор нормы калорий</div>
+                    <div class="calculator__step-title">Выберите ваш пол:</div>
+                    <div class="calculator-gender">
+                        <div class="calculator-gender__items">
+                            <div class="calculator-gender__item">
+                                <label for="man">
+                                    <img src="img/man.png" alt="">
+                                    <span>Мужской</span>
+                                </label>
+                                <input id="man" type="radio" name="gender" value="man" required>
+                            </div>
+                            <div class="calculator-gender__item">
+                                <label for="woman">
+                                    <img src="img/woman.png" alt="">
+                                    <span>Женский</span>
+                                </label>
+                                <input id="woman" type="radio" name="gender" value="woman">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="step-1-btn" class="calculator-btn">Продолжить</button>
+                </div>
+
+                <!--step 2-->
+                <div class="step" id="step-2" style="display: none;">
+                    <div class="calculator__title">Выберите уровень ежедневной активности</div>
+                    <div class="calculator-activity">
+                        <div class="calculator-activity__items">
+                            <div class="calculator-activity__item" data-active="1.2">
+                                <label for="activity-1">
+                                    <img src="img/1.2.png" alt="">
+                                    <div class="calculator-activity__item-block">
+                                        <div class="calculator-activity__item-title">1.200</div>
+                                        <div class="calculator-activity__item-text">Для малоподвижных людей, тренировок мало или они отсутствуют</div>
+                                    </div>
+                                </label>
+                                <input id="activity-1" type="radio" name="activity" value="1.200">
+                            </div>
+                            <div class="calculator-activity__item" data-active="1.375">
+                                <label for="activity-2">
+                                    <img src="img/1.375.png" alt="">
+                                    <div class="calculator-activity__item-block">
+                                        <div class="calculator-activity__item-title">1.375</div>
+                                        <div class="calculator-activity__item-text">Для людей с низкой активностью, легкие тренировки 1-3 раза в неделю или в виде эквивалента другой активности.</div>
+                                    </div>
+                                </label>
+                                <input id="activity-2" type="radio" name="activity" value="1.375">
+                            </div>
+                            <div class="calculator-activity__item" data-active="1.55">
+                                <label for="activity-3">
+                                    <img src="img/1.55.png" alt="">
+                                    <div class="calculator-activity__item-block">
+                                        <div class="calculator-activity__item-title">1.550</div>
+                                        <div class="calculator-activity__item-text">Для умеренно активных людей: физическая работа средней тяжести или регулярные тренировки 3-5 дней в неделю.</div>
+                                    </div>
+                                </label>
+                                <input id="activity-3" type="radio" name="activity" value="1.550">
+                            </div>
+                            <div class="calculator-activity__item" data-active="1.725">
+                                <label for="activity-4">
+                                    <img src="img/1.72.png" alt="">
+                                    <div class="calculator-activity__item-block">
+                                        <div class="calculator-activity__item-title">1.725</div>
+                                        <div class="calculator-activity__item-text">Для очень активных людей: физическая работа полный день или интенсивные тренировки 6-7 раз в неделю.</div>
+                                    </div>
+                                </label>
+                                <input id="activity-4" type="radio" name="activity" value="1.725">
+                            </div>
+                            <div class="calculator-activity__item" data-active="1.9">
+                                <label for="activity-5">
+                                    <img src="img/1.9.png" alt="">
+                                    <div class="calculator-activity__item-block">
+                                        <div class="calculator-activity__item-title">1.900</div>
+                                        <div class="calculator-activity__item-text">Для предельно активных людей: тяжелая физическая работа и интенсивные тренировки/занятия спортом.</div>
+                                    </div>
+                                </label>
+                                <input id="activity-5" type="radio" name="activity" value="1.900">
+                            </div>
+                        </div>
+                    </div>  
+                    <button id="step-2-btn" class="calculator-btn">Продолжить</button>
+                </div>
+
+                <!--step 3-->
+                <div class="step" id="step-3" style="display: none;">
+                    <div class="calculator__step-title">Внесите свои данные:</div>
+                    <div class="data">
+                        <div class="data__block">
+                            <div class="data__block-item">
+                                <label for="age">Ваш возраст</label>
+                                <input id="age" type="number" name="age" min="1" max="100">
+                            </div>
+                            <div class="data__block-item">
+                                <label for="growth">Ваш рост</label>
+                                <input id="growth" type="number" name="growth" min="1" max="250">
+                            </div>
+                            <div class="data__block-item">
+                                <label for="weight">Ваш вес</label>
+                                <input id="weight" type="number" name="weight" min="1" max="500">
+                            </div>
+                        </div>
+                        <button type="submit" id="step-result" class="calculator-btn">Рассчитать норму калорий</button>
+                    </div>
+                </div>
+            </form>
+
+            <!--step 4-->
+            <div id="calculator-result" class="calculator-result" style="display: none;">
+                <div class="calculator-result__title">Ваш индекс массы тела (ИМТ): </div>
+                <div class="calculator-result__imt">
+                    <div>
+                        <div class="calculator-result__imt-value">
+                            <span id="imt-value"></span>
+                        </div>
+                        <div class="calculator-result__imt-text">(норма от 18.5 до 25)</div>
+                    </div>
+                </div>
+                <table class="calculator-result__table">
+                    <tbody>
+                        <tr>
+                            <td style="width: 274px;">Ваша <span>норма калорий</span> для поддержания веса с текущей физической активностью (вы не худеете и не набираете вес)</td>
+                            <td style="width: 71px;" align="center"><span id="nc" class="value"></span></br>ккал/сутки</td>
+                        </tr>
+                    </tbody>
+                </table>             
+                </div>
+            </div>
+        </div>
+  <script src="./personDB.js"></script>
+</body>
+</html>
